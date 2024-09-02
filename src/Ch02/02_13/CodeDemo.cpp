@@ -6,9 +6,15 @@
 
 int main(){
     int nums[5] = {1,23,32,24,337};
-    float result; 
+    float result;
+    int sum = 0;
+    int i;
 
-    // Write your code here
+    for (i=0; i<sizeof(nums)/sizeof(int); i++){
+        sum += nums[i];
+    }
+
+    result = (float) sum / (float) (sizeof(nums)/sizeof(int));
     
     std::cout << "The average is " << result << std::endl;
     
