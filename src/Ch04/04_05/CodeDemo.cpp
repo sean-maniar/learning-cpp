@@ -27,8 +27,26 @@ int main(){
     // Calculate the GPA for the selected student.
     // Write your code here
 
+    int sum = 0;
+    int totPoint = 0;
+
+    for(Grade& x:grades){
+        if (x.get_student_id()==id){
+            sum+=courses[x.get_course_id()-1].get_credits();
+            switch(x.get_grade()){
+                case 'A': totPoint+=4*(courses[x.get_course_id()-1].get_credits()); break;
+                case 'B': totPoint+=3*(courses[x.get_course_id()-1].get_credits()); break;
+                case 'C': totPoint+=2*(courses[x.get_course_id()-1].get_credits()); break;
+                case 'D': totPoint+=1*(courses[x.get_course_id()-1].get_credits()); break;
+                case 'F': totPoint+=0*(courses[x.get_course_id()-1].get_credits()); break;
+            }
+        }
+    }
+
+    GPA = ((float) totPoint)/sum;
+
     std::string student_str;
-    student_str = students[0].get_name(); // Change this to the selected student's name
+    student_str = students[id-1].get_name(); // Change this to the selected student's name
 
     std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
     
